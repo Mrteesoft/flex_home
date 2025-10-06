@@ -1,0 +1,430 @@
+{
+  "status": "success",
+  "result": [
+    {
+      "id": 7453,
+      "listingId": 201,
+      "listingName": "Shoreditch Heights A",
+      "type": "guest-to-host",
+      "channel": "airbnb",
+      "status": "published",
+      "rating": 96,
+      "ratingScale": 100,
+      "publicReview": "Stunning views and such a smooth check-in. Flex team was responsive throughout the stay.",
+      "privateReview": "Heating took a little extra time to kick in on the first night.",
+      "reviewCategory": [
+        {
+          "category": "cleanliness",
+          "rating": 10
+        },
+        {
+          "category": "communication",
+          "rating": 9
+        },
+        {
+          "category": "location",
+          "rating": 10
+        }
+      ],
+      "submittedAt": "2024-03-12T21:10:00Z",
+      "guestName": "Shane Finkelstein",
+      "managerResponse": null,
+      "tags": ["family", "city-break"],
+      "publishOnFlex": true
+    },
+    {
+      "id": 7454,
+      "listingId": 201,
+      "listingName": "Shoreditch Heights A",
+      "type": "guest-to-host",
+      "channel": "booking",
+      "status": "published",
+      "rating": null,
+      "ratingScale": null,
+      "publicReview": "Loved the design and location. Check-in instructions could be clearer but staff helped quickly.",
+      "privateReview": null,
+      "reviewCategory": [
+        {
+          "category": "cleanliness",
+          "rating": 9
+        },
+        {
+          "category": "communication",
+          "rating": 8
+        },
+        {
+          "category": "respect_house_rules",
+          "rating": 10
+        }
+      ],
+      "submittedAt": "2024-02-03T18:35:00Z",
+      "guestName": "Maria Lopez",
+      "managerResponse": "Thanks Maria! We've now updated the digital guide with clearer check-in steps.",
+      "tags": ["remote-work"],
+      "publishOnFlex": true
+    },
+    {
+      "id": 7455,
+      "listingId": 202,
+      "listingName": "Camden Lock Suites",
+      "type": "guest-to-host",
+      "channel": "google",
+      "status": "published",
+      "rating": 4.4,
+      "ratingScale": 5,
+      "publicReview": "Comfortable stay overall but the Wi-Fi dropped a few times in the evening.",
+      "privateReview": "Guests left dishes unwashed.",
+      "reviewCategory": [
+        {
+          "category": "cleanliness",
+          "rating": 7
+        },
+        {
+          "category": "communication",
+          "rating": 9
+        },
+        {
+          "category": "location",
+          "rating": 8
+        }
+      ],
+      "submittedAt": "2024-04-08T08:15:00Z",
+      "guestName": "Priya Singh",
+      "managerResponse": null,
+      "tags": ["business"],
+      "publishOnFlex": false
+    },
+    {
+      "id": 7456,
+      "listingId": 202,
+      "listingName": "Camden Lock Suites",
+      "type": "guest-to-host",
+      "channel": "airbnb",
+      "status": "published",
+      "rating": 4.9,
+      "ratingScale": 5,
+      "publicReview": "Loved the roof terrace and proximity to Camden Market. We'll be back!",
+      "privateReview": null,
+      "reviewCategory": [
+        {
+          "category": "cleanliness",
+          "rating": 10
+        },
+        {
+          "category": "communication",
+          "rating": 10
+        },
+        {
+          "category": "check_in",
+          "rating": 9
+        }
+      ],
+      "submittedAt": "2024-01-27T20:45:00Z",
+      "guestName": "Jordan Willis",
+      "managerResponse": "Thanks for choosing Flex Living, Jordan!",
+      "tags": ["couple"],
+      "publishOnFlex": true
+    },
+    {
+      "id": 7457,
+      "listingId": 203,
+      "listingName": "Southbank Riverside Loft",
+      "type": "guest-to-host",
+      "channel": "airbnb",
+      "status": "published",
+      "rating": 4.1,
+      "ratingScale": 5,
+      "publicReview": "Fantastic view but could use blackout curtains in the bedroom.",
+      "privateReview": "Neighbors complained about noise before quiet hours.",
+      "reviewCategory": [
+        {
+          "category": "cleanliness",
+          "rating": 8
+        },
+        {
+          "category": "communication",
+          "rating": 7
+        },
+        {
+          "category": "check_in",
+          "rating": 9
+        }
+      ],
+      "submittedAt": "2024-05-02T16:00:00Z",
+      "guestName": "Leonard Cho",
+      "managerResponse": null,
+      "tags": ["family"],
+      "publishOnFlex": false
+    },
+    {
+      "id": 7458,
+      "listingId": 203,
+      "listingName": "Southbank Riverside Loft",
+      "type": "guest-to-host",
+      "channel": "booking",
+      "status": "published",
+      "rating": 4.6,
+      "ratingScale": 5,
+      "publicReview": "Modern apartment and seamless digital check-in. Would recommend.",
+      "privateReview": "Guest requested late checkout extension.",
+      "reviewCategory": [
+        {
+          "category": "cleanliness",
+          "rating": 9
+        },
+        {
+          "category": "communication",
+          "rating": 9
+        },
+        {
+          "category": "location",
+          "rating": 9
+        }
+      ],
+      "submittedAt": "2024-02-18T11:25:00Z",
+      "guestName": "Elena Rossi",
+      "managerResponse": "Happy to hear it, Elena! Blackout blinds now on order.",
+      "tags": ["city-break"],
+      "publishOnFlex": true
+    },
+    {
+      "id": 7459,
+      "listingId": 204,
+      "listingName": "King's Cross Studio XL",
+      "type": "guest-to-host",
+      "channel": "expedia",
+      "status": "published",
+      "rating": 78,
+      "ratingScale": 100,
+      "publicReview": "Great location for the Eurostar, but the space felt smaller than in photos.",
+      "privateReview": "Consider new photos with wide-angle lens.",
+      "reviewCategory": [
+        {
+          "category": "cleanliness",
+          "rating": 8
+        },
+        {
+          "category": "communication",
+          "rating": 8
+        },
+        {
+          "category": "location",
+          "rating": 10
+        }
+      ],
+      "submittedAt": "2024-03-30T09:40:00Z",
+      "guestName": "Nadine Walker",
+      "managerResponse": null,
+      "tags": ["solo"],
+      "publishOnFlex": false
+    },
+    {
+      "id": 7460,
+      "listingId": 204,
+      "listingName": "King's Cross Studio XL",
+      "type": "guest-to-host",
+      "channel": "airbnb",
+      "status": "published",
+      "rating": 4.7,
+      "ratingScale": 5,
+      "publicReview": "Immaculate studio and loved the welcome hamper.",
+      "privateReview": null,
+      "reviewCategory": [
+        {
+          "category": "cleanliness",
+          "rating": 10
+        },
+        {
+          "category": "communication",
+          "rating": 9
+        },
+        {
+          "category": "respect_house_rules",
+          "rating": 10
+        }
+      ],
+      "submittedAt": "2024-04-22T13:20:00Z",
+      "guestName": "Omar Khalid",
+      "managerResponse": "Delighted you enjoyed your stay!",
+      "tags": ["business"],
+      "publishOnFlex": true
+    },
+    {
+      "id": 7461,
+      "listingId": 205,
+      "listingName": "Notting Hill Garden Flat",
+      "type": "guest-to-host",
+      "channel": "airbnb",
+      "status": "pending",
+      "rating": 4.3,
+      "ratingScale": 5,
+      "publicReview": "Beautiful interiors but a bit of street noise at night.",
+      "privateReview": "Neighbours requested better communication on quiet hours.",
+      "reviewCategory": [
+        {
+          "category": "cleanliness",
+          "rating": 9
+        },
+        {
+          "category": "communication",
+          "rating": 7
+        },
+        {
+          "category": "location",
+          "rating": 8
+        }
+      ],
+      "submittedAt": "2024-05-12T07:45:00Z",
+      "guestName": "Claire Jensen",
+      "managerResponse": null,
+      "tags": ["leisure"],
+      "publishOnFlex": false
+    },
+    {
+      "id": 7462,
+      "listingId": 205,
+      "listingName": "Notting Hill Garden Flat",
+      "type": "guest-to-guest",
+      "channel": "flex",
+      "status": "published",
+      "rating": null,
+      "ratingScale": null,
+      "publicReview": "Manager complimented the guest on leaving the space in perfect condition.",
+      "privateReview": null,
+      "reviewCategory": [],
+      "submittedAt": "2024-01-19T10:05:00Z",
+      "guestName": "Flex Living",
+      "managerResponse": null,
+      "tags": ["internal"],
+      "publishOnFlex": false
+    },
+    {
+      "id": 7463,
+      "listingId": 203,
+      "listingName": "Southbank Riverside Loft",
+      "type": "host-to-guest",
+      "channel": "flex",
+      "status": "published",
+      "rating": null,
+      "ratingScale": null,
+      "publicReview": "Leonard and family were courteous guests. We'd love to welcome them back.",
+      "privateReview": null,
+      "reviewCategory": [],
+      "submittedAt": "2024-05-05T09:10:00Z",
+      "guestName": "Flex Living",
+      "managerResponse": null,
+      "tags": ["internal"],
+      "publishOnFlex": false
+    },
+    {
+      "id": 7464,
+      "listingId": 201,
+      "listingName": "Shoreditch Heights A",
+      "type": "guest-to-host",
+      "channel": "airbnb",
+      "status": "published",
+      "rating": 4.8,
+      "ratingScale": 5,
+      "publicReview": "Perfect for our design sprint week. Plenty of space for collaboration and the terrace was the team favourite.",
+      "privateReview": "Coffee pods ran low, might add a few more for longer stays.",
+      "reviewCategory": [
+        {"category": "cleanliness", "rating": 10},
+        {"category": "communication", "rating": 9},
+        {"category": "check_in", "rating": 10}
+      ],
+      "submittedAt": "2023-11-15T15:05:00Z",
+      "guestName": "Matthew Cole",
+      "managerResponse": "Thanks Matthew! We've stocked extra pods in the pantry.",
+      "tags": ["team-retreat"],
+      "publishOnFlex": true
+    },
+    {
+      "id": 7465,
+      "listingId": 202,
+      "listingName": "Camden Lock Suites",
+      "type": "guest-to-host",
+      "channel": "booking",
+      "status": "published",
+      "rating": 87,
+      "ratingScale": 100,
+      "publicReview": "Loved the industrial vibe and the rooftop sunsets. Some late-night street noise on Saturday.",
+      "privateReview": "Consider earplugs or note nightlife on weekends.",
+      "reviewCategory": [
+        {"category": "cleanliness", "rating": 8},
+        {"category": "communication", "rating": 9},
+        {"category": "location", "rating": 9}
+      ],
+      "submittedAt": "2023-08-22T19:40:00Z",
+      "guestName": "Louise Martin",
+      "managerResponse": null,
+      "tags": ["leisure"],
+      "publishOnFlex": true
+    },
+    {
+      "id": 7466,
+      "listingId": 204,
+      "listingName": "King's Cross Studio XL",
+      "type": "guest-to-host",
+      "channel": "google",
+      "status": "published",
+      "rating": 4.2,
+      "ratingScale": 5,
+      "publicReview": "Ideal for a solo work trip. Desk setup was excellent, but the hallway lighting is a little dim at night.",
+      "privateReview": null,
+      "reviewCategory": [
+        {"category": "cleanliness", "rating": 8},
+        {"category": "communication", "rating": 9},
+        {"category": "location", "rating": 9}
+      ],
+      "submittedAt": "2023-10-02T07:55:00Z",
+      "guestName": "Sarah Njoroge",
+      "managerResponse": "Appreciate the note Sarah—extra lighting has been added.",
+      "tags": ["business"],
+      "publishOnFlex": true
+    },
+    {
+      "id": 7467,
+      "listingId": 205,
+      "listingName": "Notting Hill Garden Flat",
+      "type": "guest-to-host",
+      "channel": "airbnb",
+      "status": "published",
+      "rating": 4.6,
+      "ratingScale": 5,
+      "publicReview": "The garden is a dream and the interiors are pure Notting Hill charm. Slight creak in the upstairs floorboards.",
+      "privateReview": null,
+      "reviewCategory": [
+        {"category": "cleanliness", "rating": 9},
+        {"category": "communication", "rating": 8},
+        {"category": "location", "rating": 9}
+      ],
+      "submittedAt": "2023-09-12T11:30:00Z",
+      "guestName": "Eleanor Briggs",
+      "managerResponse": "Thanks Eleanor, maintenance is scheduled for the flooring.",
+      "tags": ["creative-retreat"],
+      "publishOnFlex": true
+    },
+    {
+      "id": 7468,
+      "listingId": 203,
+      "listingName": "Southbank Riverside Loft",
+      "type": "guest-to-host",
+      "channel": "airbnb",
+      "status": "published",
+      "rating": 4.5,
+      "ratingScale": 5,
+      "publicReview": "Incredible Thames views and easy walk to the Tate. Bedrooms could use thicker drapes to block sunrise.",
+      "privateReview": null,
+      "reviewCategory": [
+        {"category": "cleanliness", "rating": 9},
+        {"category": "communication", "rating": 8},
+        {"category": "check_in", "rating": 9}
+      ],
+      "submittedAt": "2023-12-03T10:10:00Z",
+      "guestName": "Jonah Peters",
+      "managerResponse": "Appreciate it Jonah—drapery upgrade in progress.",
+      "tags": ["family"],
+      "publishOnFlex": true
+    }
+  ]
+}
