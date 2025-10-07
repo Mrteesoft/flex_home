@@ -213,20 +213,25 @@ const ChannelPieChart = ({
 
   return (
     <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-8">
-      <div
-        className="relative mx-auto size-44 rounded-full border border-white/15 bg-white/10 shadow-[0_20px_45px_-30px_rgba(15,23,42,0.8)] md:mx-0"
-        style={{
-          backgroundImage: `conic-gradient(${gradient})`,
-        }}
-      >
-        <div className="absolute inset-6 rounded-full bg-[#0b1221]" />
-        <div className="absolute inset-[2.5rem] flex items-center justify-center rounded-full bg-transparent text-sm font-semibold uppercase tracking-[0.22em] text-white">
-          Mix
+      <div className="mx-auto flex w-full max-w-xs flex-col items-center md:mx-0">
+        <div
+          className="relative aspect-square w-full rounded-full border border-white/15 bg-white/10 shadow-[0_20px_45px_-30px_rgba(15,23,42,0.8)]"
+          style={{
+            backgroundImage: `conic-gradient(${gradient})`,
+          }}
+        >
+          <div className="absolute inset-[18%] rounded-full bg-[#0b1221]" />
+          <div className="absolute inset-[37%] flex items-center justify-center rounded-full bg-transparent text-sm font-semibold uppercase tracking-[0.22em] text-white">
+            Mix
+          </div>
         </div>
       </div>
-      <ul className="flex-1 space-y-3 text-sm text-white/75">
+      <ul className="flex-1 space-y-3 text-sm text-white/75 w-full">
         {slices.map((slice) => (
-          <li key={slice.channel} className="flex items-center justify-between gap-4">
+          <li
+            key={slice.channel}
+            className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+          >
             <span className="flex items-center gap-3 text-base font-semibold">
               <span
                 className="size-2.5 rounded-full"
@@ -392,7 +397,7 @@ export function AnalyticsShell({ initialData }: AnalyticsShellProps) {
   }, []);
 
   return (
-    <div className="flex min-h-screen bg-[var(--flex-bg)] text-[var(--flex-text)] lg:flex-row">
+    <div className="flex min-h-screen overflow-x-hidden bg-[var(--flex-bg)] text-[var(--flex-text)] lg:flex-row">
       <SidebarNavigation active="analytics" isOpen={navOpen} onClose={() => setNavOpen(false)} />
       {navOpen ? (
         <button
@@ -515,7 +520,7 @@ export function AnalyticsShell({ initialData }: AnalyticsShellProps) {
           </section>
 
           <section className="grid gap-6 lg:grid-cols-1 xl:grid-cols-[1.6fr_1fr]">
-            <div className="glass-panel p-5 sm:p-6 md:p-8">
+            <div className="glass-panel min-w-0 p-5 sm:p-6 md:p-8">
               <header className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <p className="text-xs uppercase tracking-[0.2em] text-white/40">
@@ -544,7 +549,7 @@ export function AnalyticsShell({ initialData }: AnalyticsShellProps) {
                 <TrendChart data={trend} />
               </div>
             </div>
-            <div className="glass-panel p-5 sm:p-6">
+            <div className="glass-panel min-w-0 p-5 sm:p-6">
               <p className="text-xs uppercase tracking-[0.2em] text-white/40">
                 Channel mix
               </p>
@@ -558,7 +563,7 @@ export function AnalyticsShell({ initialData }: AnalyticsShellProps) {
           </section>
 
           <section className="grid gap-6 lg:grid-cols-1 xl:grid-cols-[1.4fr_1fr]">
-            <div className="glass-panel p-5 sm:p-6 md:p-8">
+            <div className="glass-panel min-w-0 p-5 sm:p-6 md:p-8">
               <header className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <p className="text-xs uppercase tracking-[0.2em] text-white/40">
@@ -577,7 +582,7 @@ export function AnalyticsShell({ initialData }: AnalyticsShellProps) {
                 <CategoryBarChart categories={categoryBreakdown} />
               </div>
             </div>
-            <div className="glass-panel p-5 sm:p-6 md:p-8">
+            <div className="glass-panel min-w-0 p-5 sm:p-6 md:p-8">
               <header className="flex flex-wrap items-start justify-between gap-2">
                 <div>
                   <p className="text-xs uppercase tracking-[0.2em] text-white/40">
@@ -610,7 +615,7 @@ const FilterSelect = ({
   onChange: (value: string) => void;
   options: { label: string; value: string }[];
 }) => (
-  <label className="flex min-w-0 flex-col gap-2 text-xs uppercase tracking-[0.18em] text-white/55">
+  <label className="flex min-w-0 flex-col gap-2 text-xs uppercase tracking-[0.18em] text-white/55 w-full">
     <span>{label}</span>
     <div className="relative">
       <select
