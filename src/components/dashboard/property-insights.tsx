@@ -86,13 +86,13 @@ export function PropertyInsights({
       : `Holding strong across ${formatInteger(listing.totalReviews)} reviews.`;
 
   return (
-    <div className="glass-panel flex flex-col gap-6 p-6 md:p-7">
-      <header className="flex flex-wrap items-start justify-between gap-4">
-        <div>
+    <div className="glass-panel flex w-full flex-col gap-6 p-6 md:p-7">
+      <header className="flex flex-wrap items-start justify-between gap-4 sm:gap-6">
+        <div className="min-w-0 flex-1">
           <p className="text-xs uppercase tracking-[0.2em] text-white/40">
             Property focus
           </p>
-          <h2 className="text-2xl font-semibold text-white">
+          <h2 className="break-words text-2xl font-semibold text-white sm:text-3xl">
             {listing.listingName}
           </h2>
           <p className="mt-2 text-sm text-white/55">{callout}</p>
@@ -105,14 +105,18 @@ export function PropertyInsights({
         </Link>
       </header>
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
           <p className="text-xs uppercase tracking-[0.2em] text-white/40">
             Avg rating
           </p>
-          <div className="mt-3 flex items-end gap-3">
-            <StarRating value={listing.averageRating ?? null} showValue={false} />
-            <span className="text-2xl font-semibold">
+          <div className="mt-3 flex flex-wrap items-center gap-3">
+            <StarRating
+              value={listing.averageRating ?? null}
+              showValue={false}
+              className="shrink-0"
+            />
+            <span className="text-2xl font-semibold leading-none sm:text-3xl">
               {formatDecimal(listing.averageRating)}
             </span>
           </div>
@@ -121,7 +125,7 @@ export function PropertyInsights({
           <p className="text-xs uppercase tracking-[0.2em] text-white/40">
             Approved live
           </p>
-          <p className="mt-3 text-2xl font-semibold text-white">
+          <p className="mt-3 text-2xl font-semibold text-white sm:text-3xl">
             {formatInteger(listing.approvedReviews)} /{" "}
             {formatInteger(listing.totalReviews)}
           </p>
@@ -136,7 +140,7 @@ export function PropertyInsights({
           <p className="text-xs uppercase tracking-[0.2em] text-white/40">
             Last review
           </p>
-          <p className="mt-3 text-lg font-medium text-white">
+          <p className="mt-3 text-lg font-medium text-white sm:text-xl">
             {formatDate(listing.lastReviewDate)}
           </p>
           <p className="mt-1 text-xs text-white/50">Rolling 12-month trendline</p>
@@ -151,7 +155,7 @@ export function PropertyInsights({
           {listing.channels.length ? (
             listing.channels.map((channel) => (
               <div key={channel.channel} className="space-y-1">
-                <div className="flex items-center justify-between text-sm text-white/70">
+                <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-white/70">
                   <span className="capitalize">{channel.label}</span>
                   <span className="text-white/50">
                     {formatInteger(channel.count)} (
@@ -179,7 +183,7 @@ export function PropertyInsights({
         <p className="text-xs uppercase tracking-[0.18em] text-white/40">
           Category pulse
         </p>
-        <div className="mt-4 grid gap-3 md:grid-cols-2">
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
           {listing.categoryAverages.length ? (
             listing.categoryAverages.map((category) => (
               <div
