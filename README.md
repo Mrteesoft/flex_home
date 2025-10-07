@@ -129,4 +129,4 @@ Returns the toggled state. Persistence is intentionally in-memory for the assess
 
 ---
 
-Feel free to reach out if you’d like a video walkthrough or architectural deep-dive. Enjoy exploring the dashboard! 
+Enjoy exploring the dashboard! 
