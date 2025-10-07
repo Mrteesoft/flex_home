@@ -73,6 +73,66 @@ const CHANNEL_LABELS: Record<ReviewChannel, string> = {
   other: "Other",
 };
 
+const NAV_ITEMS: Array<{ label: string; href: string; icon: "dashboard" | "calendar" | "buildings" | "analytics" | "reviews"; active?: boolean }> = [
+  { label: "Dashboard", href: "/dashboard", icon: "dashboard", active: true },
+  { label: "Bookings", href: "#", icon: "calendar" },
+  { label: "Properties", href: "#", icon: "buildings" },
+  { label: "Analytics", href: "#", icon: "analytics" },
+  { label: "Reviews", href: "#", icon: "reviews" },
+];
+
+const NavIcon = ({ name, active }: { name: "dashboard" | "calendar" | "buildings" | "analytics" | "reviews"; active?: boolean }) => {
+  const strokeColor = active ? "currentColor" : "rgba(255,255,255,0.65)";
+
+  switch (name) {
+    case "calendar":
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={strokeColor} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3.5" y="5.5" width="17" height="15" rx="3" />
+          <path d="M16.5 3.5v4" />
+          <path d="M7.5 3.5v4" />
+          <path d="M3.5 9.5h17" />
+        </svg>
+      );
+    case "buildings":
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={strokeColor} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 20v-9a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v9" />
+          <path d="M13 20v-5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v5" />
+          <path d="M2 20h20" />
+        </svg>
+      );
+    case "analytics":
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={strokeColor} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 19v-8" />
+          <path d="M10 19v-4" />
+          <path d="M16 19V7" />
+          <path d="M22 19V3" />
+          <path d="M2 21h20" />
+        </svg>
+      );
+    case "reviews":
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={strokeColor} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 14a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z" />
+          <path d="M10 8h6" />
+          <path d="M10 12h4" />
+        </svg>
+      );
+    case "dashboard":
+    default:
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={strokeColor} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 3h8v8H3z" />
+          <path d="M13 3h8v5h-8z" />
+          <path d="M13 12h8v9h-8z" />
+          <path d="M3 15h8v6H3z" />
+        </svg>
+      );
+  }
+};
+
 const buildQuery = (
   filters: FilterState,
   bounds?: { min?: string | null; max?: string | null },
@@ -284,7 +344,7 @@ const TrendChart = ({ data }: { data: { period: string; average: number | null }
     .join(" ");
 
   return (
-    <div className="h-48 w-full">
+    <div className="h-40 w-full sm:h-48">
       <svg
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
@@ -292,8 +352,8 @@ const TrendChart = ({ data }: { data: { period: string; average: number | null }
       >
         <defs>
           <linearGradient id="trendGradient" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="rgba(56,189,248,0.6)" />
-            <stop offset="100%" stopColor="rgba(56,189,248,0.08)" />
+            <stop offset="0%" stopColor="rgba(99,255,186,0.6)" />
+            <stop offset="100%" stopColor="rgba(99,255,186,0.08)" />
           </linearGradient>
         </defs>
         <polyline
@@ -304,7 +364,7 @@ const TrendChart = ({ data }: { data: { period: string; average: number | null }
         />
         <polyline
           fill="none"
-          stroke="rgba(56,189,248,1)"
+          stroke="rgba(99,255,186,1)"
           strokeWidth="1.5"
           strokeLinejoin="round"
           strokeLinecap="round"
@@ -446,6 +506,33 @@ const RecentMentions = ({ reviews }: { reviews: NormalizedReview[] }) => {
     );
   }
 
+  const SentimentIcon = ({ variant }: { variant: "positive" | "attention" }) => {
+    const stroke = variant === "positive" ? "var(--flex-primary)" : "var(--flex-warning)";
+    return (
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke={stroke}
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="mt-1"
+      >
+        <circle cx="12" cy="12" r="9" strokeOpacity="0.8" />
+        {variant === "positive" ? (
+          <path d="M8.5 12l2.5 2.5L16 9.5" />
+        ) : (
+          <>
+            <path d="M12 7v5" />
+            <path d="M12 16h.01" />
+          </>
+        )}
+      </svg>
+    );
+  };
+
   return (
     <div className="space-y-4">
       {reviews.map((review) => (
@@ -453,21 +540,76 @@ const RecentMentions = ({ reviews }: { reviews: NormalizedReview[] }) => {
           key={review.id}
           className="rounded-2xl border border-white/5 bg-white/5 p-4"
         >
-          <div className="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-white/40">
-            <span>{formatDate(review.submittedAt)}</span>
-            <span>{review.channel}</span>
+          <div className="flex items-start gap-3">
+            <div
+              className={`flex size-8 items-center justify-center rounded-full ${
+                review.normalizedRating && review.normalizedRating >= 4.4
+                  ? "bg-[var(--flex-primary)]/15"
+                  : "bg-[var(--flex-warning)]/15"
+              }`}
+            >
+              <SentimentIcon
+                variant={
+                  review.normalizedRating && review.normalizedRating >= 4.4
+                    ? "positive"
+                    : "attention"
+                }
+              />
+            </div>
+            <div className="flex-1">
+              <div className="flex flex-wrap items-center justify-between gap-2 text-xs uppercase tracking-[0.18em] text-white/40">
+                <span>{formatDate(review.submittedAt)}</span>
+                <span>{review.channel}</span>
+              </div>
+              <p className="mt-2 text-sm text-white/80">
+                “{review.publicReview}”
+              </p>
+              <p className="mt-1 text-xs text-white/40">
+                {compactName(review.guestName)} @ {review.listingName}
+              </p>
+            </div>
           </div>
-          <p className="mt-2 text-sm text-white/80">
-            “{review.publicReview}”
-          </p>
-          <p className="mt-1 text-xs text-white/40">
-            {compactName(review.guestName)} @ {review.listingName}
-          </p>
         </div>
       ))}
     </div>
   );
 };
+
+const SidebarNavigation = () => (
+  <aside className="relative flex w-full max-w-full flex-shrink-0 flex-col border-b border-white/10 bg-gradient-to-br from-[#0f172a]/95 to-[#050910]/80 px-4 py-6 shadow-2xl backdrop-blur-2xl sm:px-6 lg:h-screen lg:w-64 lg:border-r lg:border-b-0 lg:rounded-r-[36px]">
+    <div className="flex items-center justify-between lg:block">
+      <div>
+        <p className="text-xs uppercase tracking-[0.36em] text-white/50">Flex Living</p>
+        <h2 className="mt-2 text-2xl font-semibold text-white">Manager Hub</h2>
+      </div>
+      <span className="mt-0 rounded-full border border-[var(--flex-primary)] bg-[var(--flex-primary-soft)] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[var(--flex-primary)] lg:mt-6">
+        v1.0
+      </span>
+    </div>
+    <nav className="mt-8 space-y-2">
+      {NAV_ITEMS.map((item) => (
+        <a
+          key={item.label}
+          href={item.href}
+          className={`flex items-center gap-3 rounded-2xl border px-4 py-3 text-sm font-medium transition ${
+            item.active
+              ? "border-[var(--flex-primary)] bg-[var(--flex-primary-soft)] text-white"
+              : "border-transparent bg-white/5 text-white/70 hover:border-white/15 hover:text-white"
+          }`}
+        >
+          <NavIcon name={item.icon} active={item.active} />
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <div className="mt-auto hidden rounded-3xl border border-white/10 bg-white/5 p-4 text-sm text-white/60 lg:block">
+      <p className="text-xs uppercase tracking-[0.2em] text-white/40">Support</p>
+      <p className="mt-2">
+        Curate reviews, update pricing, and sync channel feedback in one workspace.
+      </p>
+    </div>
+  </aside>
+);
 
 const MetricCard = ({
   label,
@@ -480,17 +622,20 @@ const MetricCard = ({
   helper?: string;
   trend?: string;
 }) => (
-  <div className="metric-card">
-    <p className="text-xs uppercase tracking-[0.2em] text-white/40">{label}</p>
-    <h3 className="mt-2 text-4xl font-semibold text-white">{value}</h3>
-    {helper ? (
-      <p className="mt-4 text-sm text-white/60">{helper}</p>
-    ) : null}
-    {trend ? (
-      <p className="mt-2 text-xs uppercase tracking-[0.18em] text-[var(--flex-primary)]">
-        {trend}
-      </p>
-    ) : null}
+  <div className="metric-card relative overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-br from-[var(--flex-primary)]/12 via-transparent to-transparent" />
+    <div className="relative">
+      <p className="text-xs uppercase tracking-[0.2em] text-white/45">{label}</p>
+      <h3 className="mt-2 text-4xl font-semibold text-white">{value}</h3>
+      {helper ? (
+        <p className="mt-4 text-sm text-white/65">{helper}</p>
+      ) : null}
+      {trend ? (
+        <p className="mt-2 text-xs uppercase tracking-[0.18em] text-[var(--flex-primary)]">
+          {trend}
+        </p>
+      ) : null}
+    </div>
   </div>
 );
 
@@ -505,7 +650,7 @@ const Select = ({
   onChange: (value: string) => void;
   options: { label: string; value: string }[];
 }) => (
-  <label className="flex flex-col gap-2 text-xs uppercase tracking-[0.18em] text-white/55">
+  <label className="flex min-w-0 flex-col gap-2 text-xs uppercase tracking-[0.18em] text-white/55">
     <span>{label}</span>
     <div className="relative">
       <select
@@ -533,8 +678,8 @@ const RatingSlider = ({
   value: number;
   onChange: (value: number) => void;
 }) => (
-  <div>
-    <div className="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-white/50">
+  <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 shadow-sm">
+    <div className="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-white/60">
       <span>Min rating</span>
       <span className="text-white/70">{value.toFixed(1)}</span>
     </div>
@@ -545,7 +690,7 @@ const RatingSlider = ({
       step={0.1}
       value={value}
       onChange={(event) => onChange(Number.parseFloat(event.target.value))}
-      className="mt-2 h-2 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-[var(--flex-primary)]"
+      className="mt-3 h-2 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-[var(--flex-primary)]"
     />
   </div>
 );
@@ -705,8 +850,11 @@ export default function DashboardShell({ initialData }: DashboardShellProps) {
   const summary = data.metrics.filtered;
 
   return (
-    <div className="mx-auto flex w-full max-w-[1240px] flex-col gap-8 px-4 py-8 sm:px-6 md:px-10 lg:px-16">
-      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+    <div className="flex min-h-screen flex-col bg-[var(--flex-bg)] text-[var(--flex-text)] lg:flex-row">
+      <SidebarNavigation />
+      <div className="flex-1 px-4 py-8 sm:px-6 md:px-10 lg:px-12">
+        <div className="mx-auto flex w-full max-w-[1240px] flex-col gap-8">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-xs uppercase tracking-[0.3em] text-white/40">
             Flex Living
@@ -721,14 +869,14 @@ export default function DashboardShell({ initialData }: DashboardShellProps) {
         </div>
         <Link
           href="/properties/shoreditch-heights-a"
-          className="inline-flex items-center justify-center rounded-full border border-[var(--flex-primary)] bg-[var(--flex-primary-soft)] px-6 py-3 text-sm font-medium text-[var(--flex-primary)] transition hover:border-[var(--flex-primary-strong)] hover:bg-[var(--flex-primary-strong)]/20"
+          className="inline-flex w-full items-center justify-center rounded-full border border-[var(--flex-primary)] bg-[var(--flex-primary-soft)] px-6 py-3 text-sm font-medium text-[var(--flex-primary)] transition hover:border-[var(--flex-primary-strong)] hover:bg-[var(--flex-primary-strong)]/20 sm:w-auto"
         >
           View sample property page →
         </Link>
-      </div>
+          </div>
 
-      <section className="glass-panel p-6 md:p-8">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <section className="glass-panel p-5 sm:p-6 md:p-8">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <Select
             label="Property"
             value={filters.property}
@@ -743,33 +891,33 @@ export default function DashboardShell({ initialData }: DashboardShellProps) {
           />
           <Select
             label="Category focus"
-        value={filters.category}
-        onChange={(value) => filterSetter("category")(value as FilterState["category"])}
-        options={categoryOptions}
-      />
-      <Select
-        label="Time window"
-        value={filters.timeRange}
-        onChange={(value) => filterSetter("timeRange")(value as FilterState["timeRange"])}
-        options={Object.entries(TIME_RANGE_LABEL).map(([value, label]) => ({
-          value,
-          label,
-        }))}
-      />
-    </div>
-        <div className="mt-6 grid gap-6 md:grid-cols-[1fr_auto_auto_auto]">
+            value={filters.category}
+            onChange={(value) => filterSetter("category")(value as FilterState["category"])}
+            options={categoryOptions}
+          />
+          <Select
+            label="Time window"
+            value={filters.timeRange}
+            onChange={(value) => filterSetter("timeRange")(value as FilterState["timeRange"])}
+            options={Object.entries(TIME_RANGE_LABEL).map(([value, label]) => ({
+              value,
+              label,
+            }))}
+          />
+        </div>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 sm:gap-5 md:grid-cols-[1fr_auto_auto_auto] md:gap-6">
           <RatingSlider
             value={filters.minRating}
             onChange={(value) => filterSetter("minRating")(value)}
           />
-          <label className="flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-white/50">
+          <label className="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-xs uppercase tracking-[0.18em] text-white/60 shadow-sm">
+            <span>Show only approved</span>
             <input
               type="checkbox"
               checked={filters.approvedOnly}
               onChange={(event) => filterSetter("approvedOnly")(event.target.checked)}
               className="size-5 accent-[var(--flex-primary)]"
             />
-            show only approved
           </label>
           <Select
             label="Sort"
@@ -783,20 +931,22 @@ export default function DashboardShell({ initialData }: DashboardShellProps) {
               { value: "listing:asc", label: "Property name (A → Z)" },
             ]}
           />
-          <button
-            type="button"
-            onClick={() => {
-              setFilters(DEFAULT_FILTERS);
-              setRefreshNonce((count) => count + 1);
-            }}
-            className="self-end rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.18em] text-white/55 transition hover:border-white/20 hover:text-white/80"
-          >
-            Reset
-          </button>
+          <div className="flex items-center justify-end">
+            <button
+              type="button"
+              onClick={() => {
+                setFilters(DEFAULT_FILTERS);
+                setRefreshNonce((count) => count + 1);
+              }}
+              className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.18em] text-white/60 transition hover:border-white/20 hover:text-white/85 sm:w-auto"
+            >
+              Reset
+            </button>
+          </div>
         </div>
-      </section>
+          </section>
 
-      <section className="grid gap-5 md:grid-cols-3 lg:grid-cols-4">
+          <section className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         <MetricCard
           label="Average rating"
           value={summary.averageRating == null ? "–" : formatDecimal(summary.averageRating)}
@@ -820,10 +970,10 @@ export default function DashboardShell({ initialData }: DashboardShellProps) {
           label="Date range"
           value={`${formatDate(summary.dateRange.from)} → ${formatDate(summary.dateRange.to)}`}
         />
-      </section>
+          </section>
 
-      <section className="grid gap-6 lg:grid-cols-[2fr_1fr]">
-        <div className="glass-panel p-6 md:p-8">
+          <section className="grid gap-6 lg:grid-cols-[2fr_1fr]">
+            <div className="glass-panel p-5 sm:p-6 md:p-8">
           <header className="flex flex-wrap items-start justify-between gap-4">
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-white/40">
@@ -851,9 +1001,9 @@ export default function DashboardShell({ initialData }: DashboardShellProps) {
           <div className="mt-6">
             <TrendChart data={trend} />
           </div>
-        </div>
-        <div className="space-y-6">
-          <div className="glass-panel p-6">
+            </div>
+            <div className="space-y-6">
+              <div className="glass-panel p-5 sm:p-6">
             <p className="text-xs uppercase tracking-[0.2em] text-white/40">
               Review sources
             </p>
@@ -864,7 +1014,7 @@ export default function DashboardShell({ initialData }: DashboardShellProps) {
               <SourcesBreakdown data={reviewSources} />
             </div>
           </div>
-          <div className="glass-panel p-6">
+              <div className="glass-panel p-5 sm:p-6">
             <p className="text-xs uppercase tracking-[0.2em] text-white/40">
               Highlights
             </p>
@@ -875,11 +1025,11 @@ export default function DashboardShell({ initialData }: DashboardShellProps) {
               <RecentMentions reviews={recentMentions} />
             </div>
           </div>
-        </div>
-      </section>
+            </div>
+          </section>
 
-      <section className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-        <div className="glass-panel flex flex-col gap-6 p-6 md:p-8">
+          <section className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+            <div className="glass-panel flex flex-col gap-6 p-5 sm:p-6 md:p-8">
           <header className="flex flex-wrap items-start justify-between gap-4">
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-white/40">
@@ -900,7 +1050,7 @@ export default function DashboardShell({ initialData }: DashboardShellProps) {
             </div>
           ) : null}
           {loading ? (
-            <div className="flex min-h-[200px] items-center justify-center text-sm text-white/60">
+            <div className="flex min-h-[160px] items-center justify-center text-sm text-white/60">
               Loading fresh insights…
             </div>
           ) : data.reviews.length ? (
@@ -922,9 +1072,9 @@ export default function DashboardShell({ initialData }: DashboardShellProps) {
           )}
         </div>
 
-        <div className="flex h-fit flex-col gap-6">
+            <div className="flex h-fit flex-col gap-6">
           <PropertyInsights listing={focusedListing} />
-          <div className="glass-panel flex flex-col gap-6 p-6 md:p-8">
+              <div className="glass-panel flex flex-col gap-6 p-5 sm:p-6 md:p-8">
             <header>
               <p className="text-xs uppercase tracking-[0.2em] text-white/40">
                 Top properties
@@ -937,9 +1087,11 @@ export default function DashboardShell({ initialData }: DashboardShellProps) {
               listings={data.listings}
               onFocus={(slug) => filterSetter("property")(slug as FilterState["property"])}
             />
-          </div>
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

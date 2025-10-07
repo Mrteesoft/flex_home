@@ -6,10 +6,10 @@
   --flex-bg-alt: #111c32;
   --flex-surface: rgba(17, 25, 40, 0.78);
   --flex-border: rgba(148, 163, 184, 0.14);
-  --flex-primary: #38bdf8;
-  --flex-primary-soft: rgba(56, 189, 248, 0.15);
-  --flex-primary-strong: #0ea5e9;
-  --flex-accent: #fbbf24;
+  --flex-primary: #63ffba;
+  --flex-primary-soft: rgba(99, 255, 186, 0.18);
+  --flex-primary-strong: #2de7a2;
+  --flex-accent: #9fd5ff;
   --flex-warning: #fb923c;
   --flex-danger: #ef4444;
   --flex-text: #f8fafc;
@@ -50,7 +50,7 @@ a {
 
 @layer components {
   .glass-panel {
-    @apply rounded-3xl border border-white/10 bg-white/10 backdrop-blur-xl;
+    @apply rounded-[28px] border border-white/10 bg-white/10 shadow-[0_24px_60px_-32px_rgba(15,23,42,0.8)] backdrop-blur-xl;
   }
 
   .metric-card {
