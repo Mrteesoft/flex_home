@@ -89,11 +89,17 @@ const coerceChannel = (value?: string | null): ReviewChannel => {
   return "other";
 };
 
-const coerceType = (value?: string | null): ReviewType =>
-  (value && REVIEW_TYPE_FALLBACKS[value.toLowerCase()]) ?? "unknown";
+const coerceType = (value?: string | null): ReviewType => {
+  if (!value) return "unknown";
+  const normalized = value.toLowerCase();
+  return REVIEW_TYPE_FALLBACKS[normalized] ?? "unknown";
+};
 
-const coerceStatus = (value?: string | null): ReviewStatus =>
-  (value && REVIEW_STATUS_FALLBACKS[value.toLowerCase()]) ?? "published";
+const coerceStatus = (value?: string | null): ReviewStatus => {
+  if (!value) return "published";
+  const normalized = value.toLowerCase();
+  return REVIEW_STATUS_FALLBACKS[normalized] ?? "published";
+};
 
 const detectScale = (rating?: number | null, ratingScale?: number | null) => {
   if (ratingScale && ratingScale > 0) return ratingScale;

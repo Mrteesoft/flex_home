@@ -30,7 +30,7 @@ const properties: PropertySummary[] = [
     bathrooms: 2,
     size: 92,
     heroImage:
-      "https://images.unsplash.com/photo-1616594039964-54ecec6f5035?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1600&q=80",
     gallery: [
       "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80",
