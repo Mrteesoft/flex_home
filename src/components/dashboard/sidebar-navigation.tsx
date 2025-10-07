@@ -4,10 +4,7 @@ import Link from "next/link";
 
 export type NavKey =
   | "dashboard"
-  | "bookings"
-  | "properties"
-  | "analytics"
-  | "reviews";
+  | "analytics";
 
 const NAV_ITEMS: Array<{
   key: NavKey;
@@ -16,10 +13,7 @@ const NAV_ITEMS: Array<{
   icon: NavKey;
 }> = [
   { key: "dashboard", label: "Dashboard", href: "/dashboard", icon: "dashboard" },
-  { key: "bookings", label: "Bookings", href: "#", icon: "bookings" },
-  { key: "properties", label: "Properties", href: "#", icon: "properties" },
   { key: "analytics", label: "Analytics", href: "/analytics", icon: "analytics" },
-  { key: "reviews", label: "Reviews", href: "/dashboard", icon: "reviews" },
 ];
 
 const NavIcon = ({
@@ -32,23 +26,6 @@ const NavIcon = ({
   const strokeColor = active ? "currentColor" : "rgba(255,255,255,0.65)";
 
   switch (name) {
-    case "bookings":
-      return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={strokeColor} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3.5" y="5.5" width="17" height="15" rx="3" />
-          <path d="M16.5 3.5v4" />
-          <path d="M7.5 3.5v4" />
-          <path d="M3.5 9.5h17" />
-        </svg>
-      );
-    case "properties":
-      return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={strokeColor} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M4 20v-9a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v9" />
-          <path d="M13 20v-5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v5" />
-          <path d="M2 20h20" />
-        </svg>
-      );
     case "analytics":
       return (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={strokeColor} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -59,15 +36,6 @@ const NavIcon = ({
           <path d="M2 21h20" />
         </svg>
       );
-    case "reviews":
-      return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={strokeColor} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M21 14a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z" />
-          <path d="M10 8h6" />
-          <path d="M10 12h4" />
-        </svg>
-      );
-    case "dashboard":
     default:
       return (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={strokeColor} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">

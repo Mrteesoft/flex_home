@@ -36,7 +36,14 @@ src/
      └─ format.ts
 ```
 
-## 2. Local Development
+## 2. Running the Project
+
+### Hosted build
+
+- Production deployments run on Vercel (Next.js 15 / Node 20).  
+- The latest successful preview link is available via the Vercel dashboard for the `main` branch.
+
+### Local development
 
 1. **Install dependencies**
    ```bash

@@ -750,7 +750,7 @@ export default function DashboardShell({ initialData }: DashboardShellProps) {
 
   return (
     <div className="flex min-h-screen bg-[var(--flex-bg)] text-[var(--flex-text)] lg:flex-row">
-      <SidebarNavigation active="reviews" isOpen={navOpen} onClose={() => setNavOpen(false)} />
+      <SidebarNavigation active="dashboard" isOpen={navOpen} onClose={() => setNavOpen(false)} />
       {navOpen ? (
         <button
           type="button"
