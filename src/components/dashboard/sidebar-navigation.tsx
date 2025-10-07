@@ -51,7 +51,7 @@ const NavIcon = ({
 export const SidebarNavigation = ({
   isOpen = false,
   onClose,
-  active = "reviews",
+  active = "dashboard",
 }: {
   isOpen?: boolean;
   onClose?: () => void;
